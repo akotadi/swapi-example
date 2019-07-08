@@ -25,12 +25,10 @@ mongoose
     console.log(err);
   });
 
-const indexRouter = require('./routes/index');
 const filmsRouter = require('./routes/films');
 const starshipsRouter = require('./routes/starships');
 
 // Routers
-app.use('/', indexRouter);
 app.use('/films', filmsRouter);
 app.use('/starships', starshipsRouter);
 
