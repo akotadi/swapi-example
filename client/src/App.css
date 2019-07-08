@@ -31,3 +31,20 @@
     transform: rotate(360deg);
   }
 }
+
+.sidenav-container {
+  background: #212529;
+  color: black;
+}
+
+.sidenav-icon {
+  color: black;
+}
+
+.main-container {
+  width: 88%;
+  position: absolute;
+  overflow: hidden;
+  transition: all .15s;
+  margin-left: 40px;
+}
