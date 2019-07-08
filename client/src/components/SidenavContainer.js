@@ -19,6 +19,7 @@ class SidenavContainer extends Component {
         props.onSidenavChange('1');
 
         this.state = {
+            currentUrl: undefined,
             activeStep: '1',
             selected: 'film'
         }
@@ -29,7 +30,6 @@ class SidenavContainer extends Component {
             currentUrl: film,
             activeStep: '2'
         });
-        this.enableTwo();
         this.props.onSidenavChange('2');
     }
 
@@ -40,12 +40,11 @@ class SidenavContainer extends Component {
             enableTwo: false,
             enableThree: false,
         });
-        this.enableThree();
         this.props.onSidenavChange('3');
     }
 
     handleSubmitClick = value => {
-        this.setState({ activeStep: value });
+        this.setState({ activeStep: '3' });
     }
 
     renderMainContainer() {
@@ -59,20 +58,9 @@ class SidenavContainer extends Component {
     }
 
     onSelectedItem = (selected) => {
-        console.log(selected);
         this.setState({ activeStep: selected });
         this.props.onSidenavChange(selected);
     }
-
-    enableTwo = () => {
-        const newValue = !this.state.enableTwo;
-        this.setState({ enableTwo: newValue})
-    };
-
-    enableThree = () => {
-        const newValue = !this.state.enableThree;
-        this.setState({ enableTwo: newValue })
-    };
 
     render() {
 
@@ -83,7 +71,7 @@ class SidenavContainer extends Component {
                         onSelect={this.onSelectedItem}
                         className="sidenav-container"
                     >
-                        <SideNav.Nav defaultSelected={this.state.activeStep} style={{ background: '#212529' }} >
+                        <SideNav.Nav style={{ background: '#343A40' }} selected={this.state.activeStep}>
                             <NavItem eventKey="1">
                                 <NavIcon>
                                     <FontAwesomeIcon icon={faFilm} style={{ fontSize: '1.75em', color: 'yellow' }} />
@@ -92,7 +80,7 @@ class SidenavContainer extends Component {
                                     Section 1
                             </NavText>
                             </NavItem>
-                            <NavItem eventKey="2" disabled={this.state.enableTwo}>
+                            <NavItem eventKey="2" >
                                 <NavIcon>
                                     <FontAwesomeIcon icon={faRocket} style={{ fontSize: '1.75em', color: 'yellow' }} />
                                 </NavIcon>
@@ -100,7 +88,7 @@ class SidenavContainer extends Component {
                                     Section 2
                             </NavText>
                             </NavItem>
-                            <NavItem eventKey="3" disabled={this.state.enableThree}>
+                            <NavItem eventKey="3" >
                                 <NavIcon>
                                     <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.75em', color: 'yellow' }} />
                                 </NavIcon>
@@ -111,7 +99,7 @@ class SidenavContainer extends Component {
                         </SideNav.Nav>
                     </SideNav>
                 </div>
-                <div className="col-11" className='main-container'>
+                <div className="col-11 main-container" >
                     {this.renderMainContainer()}
                 </div>
             </Container>

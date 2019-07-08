@@ -13,28 +13,40 @@ const getData = url => {
 
 export const getStarships = filmUrl => dispatch => {
     dispatch(setLoadingStarships());
-    axios
-        .get(filmUrl)
-        .then(response => {
-            let starshipRequest = [];
-            let starshipList = [];
-            response.data.starships.forEach(url => {
-                starshipRequest.push(getData(url));
-            });
-            axios.all(starshipRequest)
-                .then(axios.spread((...args) => {
-                    for (let i = 0; i < args.length; i++) {
-                        starshipList.push(args[i].data);
-                    }
-                }))
-                .then(res => dispatch({
-                    type: GET_STARSHIPS,
-                    payload: starshipList,
-                }))
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    if(filmUrl !== undefined && filmUrl.includes('film')){
+        axios
+            .get(filmUrl)
+            .then(response => {
+                let starshipRequest = [];
+                let starshipList = [];
+                response.data.starships.forEach(url => {
+                    starshipRequest.push(getData(url));
+                });
+                axios.all(starshipRequest)
+                    .then(axios.spread((...args) => {
+                        for (let i = 0; i < args.length; i++) {
+                            starshipList.push(args[i].data);
+                        }
+                    }))
+                    .then(res => dispatch({
+                        type: GET_STARSHIPS,
+                        payload: starshipList,
+                    }))
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }else{
+        axios
+            .get('https://swapi.co/api/starships/')
+            .then(res => dispatch({
+                type: GET_STARSHIPS,
+                payload: res.data.results,
+            }))
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
 };
 
 export const getStarshipsFromDatabase = () => dispatch => {

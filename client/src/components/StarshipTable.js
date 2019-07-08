@@ -54,7 +54,7 @@ class StarshipTable extends Component {
 }
 
 StarshipTable.propTypes = {
-    filmUrl: PropTypes.string.isRequired,
+    filmUrl: PropTypes.string,
     getStarships: PropTypes.func.isRequired,
     updateStarship: PropTypes.func.isRequired,
     starship: PropTypes.object.isRequired,

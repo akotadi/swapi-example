@@ -79,7 +79,7 @@ class StarshipForm extends Component {
                         <FormGroup>
                             <Label for="exampleAddress">Name</Label>
                             <Container>
-                                <Input type="text" name="name" defaultValue={starships.name} onChange={this.onChange} />
+                                <Input type="text" name="name" defaultValue={(starships.name === undefined)?('Death Star'):(starships.name)} onChange={this.onChange} />
                             </Container>
                         </FormGroup>
                         <Row form>
@@ -87,7 +87,7 @@ class StarshipForm extends Component {
                                 <FormGroup>
                                     <Label for="exampleEmail">Length</Label>
                                     <Container>
-                                        <Input type="text" name="length" defaultValue={starships.length} onChange={this.onChange} />
+                                        <Input type="text" name="length" defaultValue={(starships.length === undefined) ? ('120000') : (starships.length)} onChange={this.onChange} />
                                     </Container>
                                 </FormGroup>
                             </Col>
@@ -95,7 +95,7 @@ class StarshipForm extends Component {
                                 <FormGroup>
                                     <Label for="examplePassword">Cost</Label>
                                     <Container>
-                                        <Input type="text" name="cost_in_credits" defaultValue={starships.cost_in_credits} onChange={this.onChange} />
+                                        <Input type="text" name="cost_in_credits" defaultValue={(starships.cost_in_credits === undefined) ? ('1000000000000') : (starships.cost_in_credits)} onChange={this.onChange} />
                                     </Container>
                                 </FormGroup>
                             </Col>
