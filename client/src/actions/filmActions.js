@@ -7,7 +7,7 @@ import axios from 'axios';
 export const getFilms = () => dispatch => {
     dispatch(setLoadingFilms());
     axios
-        .get('https://swapi.co/api/films/')
+        .get('https://swapi.dev/api/films/')
         .then(res => dispatch({
             type: GET_FILMS,
             payload: res.data.results,

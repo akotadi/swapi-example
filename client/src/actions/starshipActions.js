@@ -38,7 +38,7 @@ export const getStarships = filmUrl => dispatch => {
             })
     }else{
         axios
-            .get('https://swapi.co/api/starships/')
+            .get('https://swapi.dev/api/starships/')
             .then(res => dispatch({
                 type: GET_STARSHIPS,
                 payload: res.data.results,

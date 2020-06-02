@@ -14,7 +14,7 @@
   "author": "Manuel CH",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^4.1.1",
+    "concurrently": "^5.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
